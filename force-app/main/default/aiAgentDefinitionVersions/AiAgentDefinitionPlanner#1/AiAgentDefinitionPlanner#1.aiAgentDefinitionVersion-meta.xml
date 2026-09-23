@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AiAgentDefinitionVersion xmlns="http://soap.sforce.com/2006/04/metadata">
+    <articleAnswersGPTEnabled>false</articleAnswersGPTEnabled>
+    <citationsEnabled>false</citationsEnabled>
+    <company>Salesforce</company>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>This variable may also be referred to as VerifiedCustomerId</description>
+        <developerName>VerifiedCustomerId</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>VerifiedCustomerId</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>Salesforce Application Name.</description>
+        <developerName>currentAppName</developerName>
+        <includeInPrompt>true</includeInPrompt>
+        <label>currentAppName</label>
+        <visibility>External</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>The API name of the Salesforce object (such as Account or Opportunity) associated with the record the user wants to interact with. Do not use this if the user is already talking about another object in the conversation.</description>
+        <developerName>currentObjectApiName</developerName>
+        <includeInPrompt>true</includeInPrompt>
+        <label>currentObjectApiName</label>
+        <visibility>External</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>Type of Salesforce Page.</description>
+        <developerName>currentPageType</developerName>
+        <includeInPrompt>true</includeInPrompt>
+        <label>currentPageType</label>
+        <visibility>External</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>The ID of the record on the user&apos;s screen. It may not relate to the user&apos;s input. Only use this if the user input mentions &apos;this&apos;, &apos;current&apos;, &apos;the record&apos;, etc. If in doubt, don&apos;t use it.</description>
+        <developerName>currentRecordId</developerName>
+        <includeInPrompt>true</includeInPrompt>
+        <label>currentRecordId</label>
+        <visibility>External</visibility>
+    </conversationVariables>
+    <errorMessage>Something went wrong. Try again.</errorMessage>
+    <genAiPlannerName>AiAgentDefinitionPlanner</genAiPlannerName>
+    <isScriptCompatibleAgent>false</isScriptCompatibleAgent>
+    <knowledgeActionEnabled>false</knowledgeActionEnabled>
+    <knowledgeFallbackEnabled>false</knowledgeFallbackEnabled>
+    <planner>
+        <fullName>AiAgentDefinitionPlanner</fullName>
+        <description>Cloned from SearchAgent: executes multi-step information retrieval and synthesis across federated enterprise data sources based on a user natural language utterance. Returns a synthesized answer, source attribution, and actionable next steps.</description>
+        <localActionLinks>
+            <genAiFunctionName>AnswerQuestionsWithKnowledge</genAiFunctionName>
+        </localActionLinks>
+        <masterLabel>AiAgentDefinitionPlanner</masterLabel>
+        <plannerActions>
+            <description>Answers questions about company policies and procedures, troubleshooting steps, or product information. For example: &quot;What is your return policy?&quot; &quot;How do I fix an issue?&quot; or &quot;What features does a product have?&quot;</description>
+            <invocationTarget>streamKnowledgeSearch</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>AnswerQuestionsWithKnowledge</localDeveloperName>
+            <masterLabel>Answer Questions with Knowledge</masterLabel>
+            <progressIndicatorMessage>Getting answers</progressIndicatorMessage>
+            <source>EmployeeCopilot__AnswerQuestionsWithKnowledge</source>
+        </plannerActions>
+        <plannerSurfaces>
+            <adaptiveResponseAllowed>true</adaptiveResponseAllowed>
+            <callRecordingAllowed>false</callRecordingAllowed>
+            <outboundRouteConfigs>
+                <escalationMessage>TEST</escalationMessage>
+                <outboundRouteName>SDO_BuyerAssistant_SendToRecordOwner</outboundRouteName>
+                <outboundRouteType>OmniChannelFlow</outboundRouteType>
+            </outboundRouteConfigs>
+            <surface>SurfaceAction__Messaging</surface>
+            <surfaceType>Messaging</surfaceType>
+        </plannerSurfaces>
+        <plannerSurfaces>
+            <adaptiveResponseAllowed>true</adaptiveResponseAllowed>
+            <callRecordingAllowed>false</callRecordingAllowed>
+            <outboundRouteConfigs>
+                <escalationMessage>Enter message...</escalationMessage>
+                <outboundRouteName>SDO_Service_LunaBot_TransfertoQueue</outboundRouteName>
+                <outboundRouteType>OmniChannelFlow</outboundRouteType>
+            </outboundRouteConfigs>
+            <surface>SurfaceAction__ServiceEmail</surface>
+            <surfaceType>ServiceEmail</surfaceType>
+        </plannerSurfaces>
+        <plannerType>SentOS__SearchAgent</plannerType>
+    </planner>
+    <role>You are the AiAgentDefinitionPlanner agent.</role>
+    <smallTalkEnabled>false</smallTalkEnabled>
+    <staticPromptsEnabled>false</staticPromptsEnabled>
+    <status>Active</status>
+    <stopRecPrompts>false</stopRecPrompts>
+    <surfacesEnabled>false</surfacesEnabled>
+    <toneType>Casual</toneType>
+    <version>1</version>
+    <welcomeMessage>Hi! I&apos;m AiAgentDefinitionPlanner, an AI assistant. I can search your Salesforce data or the internet. Ask me &quot;what else can you do?&quot; to see how I can help.</welcomeMessage>
+</AiAgentDefinitionVersion>

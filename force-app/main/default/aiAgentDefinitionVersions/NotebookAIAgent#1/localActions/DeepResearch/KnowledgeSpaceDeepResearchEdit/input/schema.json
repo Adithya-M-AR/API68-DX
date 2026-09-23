@@ -1,0 +1,43 @@
+{
+  "required" : [ ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "researchId" : {
+      "title" : "Research ID",
+      "description" : "The ID of the research to edit (off-core research job ID). If not provided, will attempt to retrieve from current session.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "editInstructions" : {
+      "title" : "Edit Instructions",
+      "description" : "Natural language instructions for how to modify the research plan (e.g., 'Add data on topic X and remove step about Y'). The off-core service interprets these instructions using AI.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "deepResearchWorkflowAction" : {
+      "title" : "Deep Research Workflow Action",
+      "description" : "Workflow action identifier (e.g., 'EDIT_PLAN'). Used by the agent topic for routing to the appropriate action.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "dataSourceConfig" : {
+      "title" : "Data Source Configuration",
+      "description" : "JSON configuration object specifying data sources to include or exclude when editing the research plan. Can control which sources (files, knowledge articles, CRM data, search indexes) should be used for this research.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "researchTemplateId" : {
+      "title" : "Research Template ID",
+      "description" : "ID of the research template (from DataKnowledgeRsrchTmpl) selected by the user. The backend will look up this template and extract the filePath to pass to the off-core service for report generation.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

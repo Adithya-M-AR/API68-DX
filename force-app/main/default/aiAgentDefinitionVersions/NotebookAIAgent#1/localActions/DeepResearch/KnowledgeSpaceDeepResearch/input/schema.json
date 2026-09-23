@@ -1,0 +1,64 @@
+{
+  "required" : [ ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "knowledgeSpaceId" : {
+      "title" : "Knowledge Space ID",
+      "description" : "The ID of the Notebook AI knowledge space",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "researchQuery" : {
+      "title" : "Research Query",
+      "description" : "Research topic from the user's message",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "KnowledgeIds" : {
+      "title" : "Knowledge IDs",
+      "description" : "Comma-separated string of Knowledge IDs for context",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "FilePaths" : {
+      "title" : "File Paths",
+      "description" : "Comma-separated file paths for context",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "KnowledgeSpaceSearchIndexId" : {
+      "title" : "Knowledge Space Search Index ID",
+      "description" : "Search index ID for context",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "SInames" : {
+      "title" : "SI Names",
+      "description" : "Comma-separated string of search index names for knowledge space search",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "deepResearchWorkflowAction" : {
+      "title" : "Deep Research Workflow Action",
+      "description" : "RUN_RESEARCH creates a research plan. SHOW_THINKING, EDIT_PLAN and CANCEL are handled by other invocable actions in the Deep Research topic.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "crmSearchKeywords" : {
+      "title" : "CRM Search Keywords",
+      "description" : "Comma-separated keywords to search for CRM records (e.g., 'Acme Corporation, John Smith'). The backend will automatically query Salesforce and find matching Accounts, Contacts, Opportunities, and other CRM entities.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

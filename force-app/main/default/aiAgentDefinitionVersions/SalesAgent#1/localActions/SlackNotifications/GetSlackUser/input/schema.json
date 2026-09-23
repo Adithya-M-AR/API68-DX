@@ -1,0 +1,16 @@
+{
+  "required" : [ "salesforceUserId" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "salesforceUserId" : {
+      "title" : "Salesforce User ID",
+      "description" : "The Salesforce user ID (format: 005...) to look up the corresponding Slack user.",
+      "lightning:type" : "lightning__recordIdType",
+      "einstein:description" : "Salesforce user ID, which is used to get a corresponding Slack user ID.",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

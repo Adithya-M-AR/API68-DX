@@ -1,0 +1,22 @@
+{
+  "required" : [ "recordName" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "recordName" : {
+      "title" : "recordName",
+      "description" : "The name of the Salesforce record to find (e.g., 'Meta', 'Canvas deal').",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "objectApiName" : {
+      "title" : "objectApiName",
+      "description" : "The API name of the Salesforce object (e.g., Account, Opportunity). Leave empty if unknown.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

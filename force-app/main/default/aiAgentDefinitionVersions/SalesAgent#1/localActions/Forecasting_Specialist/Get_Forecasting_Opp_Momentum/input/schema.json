@@ -1,0 +1,36 @@
+{
+  "required" : [ "forecastingTypeId", "periodId", "userId" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "forecastingTypeId" : {
+      "title" : "Forecasting Type ID",
+      "description" : "Salesforce ID of the active ForecastingType, from Get_Forecasting_Context.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "userId" : {
+      "title" : "User ID",
+      "description" : "Salesforce User ID (005...) of the Forecasting owner, from Get_Forecasting_Context.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : true,
+      "copilotAction:isUserInput" : false
+    },
+    "periodId" : {
+      "title" : "Period ID",
+      "description" : "Salesforce ID of the current ForecastingPeriod, from Get_Forecasting_Context.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "territoryId" : {
+      "title" : "Territory ID",
+      "description" : "Optional Territory2 ID for territory-hierarchy Forecasting types. Empty for non-territory types.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

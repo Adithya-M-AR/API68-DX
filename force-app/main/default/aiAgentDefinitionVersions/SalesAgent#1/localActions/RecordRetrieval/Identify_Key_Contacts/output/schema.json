@@ -1,0 +1,19 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "contacts" : {
+      "title" : "Contacts",
+      "description" : "The key contacts of the Opportunity or Account.",
+      "maxItems" : 50,
+      "items" : {
+        "lightning:type" : "lightning__recordInfoType"
+      },
+      "lightning:type" : "lightning__listType",
+      "lightning:isPII" : true,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

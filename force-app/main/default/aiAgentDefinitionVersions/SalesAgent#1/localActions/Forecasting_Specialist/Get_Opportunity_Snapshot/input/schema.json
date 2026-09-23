@@ -1,0 +1,53 @@
+{
+  "required" : [ "forecastingTypeId", "userId", "periodId" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "forecastingTypeId" : {
+      "title" : "Forecasting Type ID",
+      "description" : "Salesforce ID of the active ForecastingType, from Get_Forecasting_Context.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "userId" : {
+      "title" : "User ID",
+      "description" : "Salesforce User ID (005...) of the forecast owner, from Get_Forecasting_Context.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : true,
+      "copilotAction:isUserInput" : false
+    },
+    "periodId" : {
+      "title" : "Period ID",
+      "description" : "Salesforce ID of the current ForecastingPeriod, from Get_Forecasting_Context.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "territoryId" : {
+      "title" : "Territory ID",
+      "description" : "Optional Territory2 ID for territory-hierarchy forecast types. Empty for non-territory types.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "forecastingCategories" : {
+      "title" : "Forecasting Categories",
+      "description" : "Forecast category API names to drill into: the validated inputCategory when the user named a category, otherwise the type's forecastable displayed categories ({Commit, Best Case, Pipeline}; Closed/Most Likely/Omitted/Custom excluded). Derived from resolvedForecastingCategories.",
+      "items" : {
+        "lightning:type" : "lightning__textType"
+      },
+      "lightning:type" : "lightning__listType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "includeHistory" : {
+      "title" : "Include History",
+      "description" : "Whether to populate prior-value columns. Optional; defaults to true when omitted.",
+      "lightning:type" : "lightning__booleanType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

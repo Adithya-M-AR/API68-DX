@@ -1,0 +1,18 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "channelSummary" : {
+      "title" : "Channel Summary",
+      "description" : "A summary of the channel's content and activity",
+      "maxLength" : 100000,
+      "lightning:type" : "lightning__richTextType",
+      "einstein:description" : "The Summary for the Slack Channel.",
+      "lightning:isPII" : true,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

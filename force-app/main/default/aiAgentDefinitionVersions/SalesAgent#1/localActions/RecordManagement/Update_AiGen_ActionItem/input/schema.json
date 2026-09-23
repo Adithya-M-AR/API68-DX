@@ -1,0 +1,22 @@
+{
+  "required" : [ "aiGenActionItemId", "aiGenActionItemStatus" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "aiGenActionItemId" : {
+      "title" : "AI Gen Action Item ID",
+      "description" : "The ID of the AiGenActionItem record to update.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : true,
+      "copilotAction:isUserInput" : true
+    },
+    "aiGenActionItemStatus" : {
+      "title" : "AI Gen Action Item Status",
+      "description" : "The new status for the action item. Valid values: 'WAITING', 'COMPLETED_SUCCESS', 'REJECTED'.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : true,
+      "copilotAction:isUserInput" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

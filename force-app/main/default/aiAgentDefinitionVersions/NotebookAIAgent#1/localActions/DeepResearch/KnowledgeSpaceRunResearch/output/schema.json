@@ -1,0 +1,15 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "runResearchResponse" : {
+      "title" : "Run Research Response",
+      "description" : "JSON string with the RunResponse from the off-core deep research service. Contains researchId and status (typically RUNNING). The renderer block parses this to start polling status.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

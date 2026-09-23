@@ -1,0 +1,21 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "researchId" : {
+      "title" : "Research ID",
+      "description" : "The off-core research job ID for the previously generated plan. If not provided, the action retrieves it from the current Knowledge Space session.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "deepResearchWorkflowAction" : {
+      "title" : "Deep Research Workflow Action",
+      "description" : "Workflow action identifier — must be RUN_RESEARCH for this action. Set by the LEX client when the user clicks Run Research on the plan card.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

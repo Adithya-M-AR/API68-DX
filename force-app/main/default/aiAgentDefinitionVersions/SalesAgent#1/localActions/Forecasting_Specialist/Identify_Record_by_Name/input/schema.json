@@ -1,0 +1,22 @@
+{
+  "required" : [ "recordName" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "recordName" : {
+      "title" : "recordName",
+      "description" : "The name of the Salesforce user to look up.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "objectApiName" : {
+      "title" : "objectApiName",
+      "description" : "The Salesforce object type. For user lookups, use 'User'.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

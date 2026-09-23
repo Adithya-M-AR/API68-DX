@@ -1,0 +1,25 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "canvasId" : {
+      "title" : "Canvas ID",
+      "description" : "The ID of the created Slack Canvas",
+      "lightning:type" : "lightning__textType",
+      "einstein:description" : "The new Slack canvas ID.",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "canvasUrl" : {
+      "title" : "Canvas URL",
+      "description" : "URL to access the created Slack Canvas",
+      "lightning:type" : "lightning__textType",
+      "einstein:description" : "The new Slack canvas URL.",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

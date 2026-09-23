@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AiAgentDefinitionVersion xmlns="http://soap.sforce.com/2006/04/metadata">
+    <articleAnswersGPTEnabled>false</articleAnswersGPTEnabled>
+    <citationsEnabled>false</citationsEnabled>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <developerName>AccountId</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Account Id</label>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <developerName>Account_Name</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Account Name</label>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Boolean</dataType>
+        <developerName>Anything_Else</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Anything else</label>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <developerName>Company</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Company</label>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <developerName>Contact_Id</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Contact Id</label>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <developerName>Contact_Owner_Id</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Contact Owner Id</label>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <developerName>CustomerCode</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Customer Code</label>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <developerName>CustomerInquiry</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Customer Inquiry</label>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <developerName>Email_Address</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Email Address</label>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <developerName>First_Name</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>First Name</label>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <developerName>Last_Name</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Last Name</label>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <developerName>Lead_Id</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Lead Id</label>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <developerName>Lead_Owner_Id</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Lead Owner Id</label>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <developerName>Meeting_Link</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Meeting Link</label>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Boolean</dataType>
+        <developerName>Needs_Transfer_to_Agent</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Needs Transfer to Agent</label>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <developerName>Opportunity_Id</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Opportunity Id</label>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <developerName>Opportunity_Owner_Id</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Opportunity Owner Id</label>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <developerName>OwnerId</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Owner Id</label>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <developerName>Retry_Verification_Code</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Retry Verification Code</label>
+    </conversationVariables>
+    <conversationVariables>
+        <SObjectType>FlowDefinition</SObjectType>
+        <dataType>Id</dataType>
+        <developerName>Route_Destination_Id</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Route Destination Id</label>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <developerName>Scheduling_Error</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Scheduling Error</label>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <developerName>User_Availability</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>User Availability</label>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <developerName>VerificationCode</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Verification Code</label>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Boolean</dataType>
+        <developerName>VerifiedStatus</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Verified Status</label>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <developerName>Yes_No</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Yes No</label>
+    </conversationVariables>
+    <conversationVariables>
+        <SObjectType>BotDefinition</SObjectType>
+        <dataType>Id</dataType>
+        <developerName>testVar</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>testVar</label>
+    </conversationVariables>
+    <errorMessage>Unfortunately, a system error occurred. I&apos;ll connect you to an agent who can help.</errorMessage>
+    <isScriptCompatibleAgent>false</isScriptCompatibleAgent>
+    <knowledgeActionEnabled>false</knowledgeActionEnabled>
+    <knowledgeFallbackEnabled>false</knowledgeFallbackEnabled>
+    <smallTalkEnabled>false</smallTalkEnabled>
+    <staticPromptsEnabled>false</staticPromptsEnabled>
+    <status>Inactive</status>
+    <stopRecPrompts>false</stopRecPrompts>
+    <surfacesEnabled>false</surfacesEnabled>
+    <toneType>Casual</toneType>
+    <version>1</version>
+    <welcomeMessage>Hi, I’m Sales Bot, a digital assistant. How can I help you today?</welcomeMessage>
+</AiAgentDefinitionVersion>

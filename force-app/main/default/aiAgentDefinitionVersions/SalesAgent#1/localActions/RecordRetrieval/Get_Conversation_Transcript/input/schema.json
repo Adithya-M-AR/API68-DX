@@ -1,0 +1,15 @@
+{
+  "required" : [ "recordId" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "recordId" : {
+      "title" : "Record ID",
+      "description" : "The Voice Call Id or Video Call Id (activityId starting with '0LQ' for voice or '6qr' for video) to retrieve the transcript for. Must come from the same call used for Get_Conversation_Intelligence.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : true,
+      "copilotAction:isUserInput" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

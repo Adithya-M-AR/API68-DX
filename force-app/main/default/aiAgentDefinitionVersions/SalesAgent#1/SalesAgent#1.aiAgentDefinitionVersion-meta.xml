@@ -1,0 +1,1139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AiAgentDefinitionVersion xmlns="http://soap.sforce.com/2006/04/metadata">
+    <articleAnswersGPTEnabled>false</articleAnswersGPTEnabled>
+    <citationsEnabled>false</citationsEnabled>
+    <company>Your company specializes in providing essential products and strategic solutions designed to enhance your customer&apos;s business performance. Its core offerings help companies improve efficiency and achieve their strategic objectives.</company>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>The agent instructions</description>
+        <developerName>AgentScriptInternal_agent_instructions</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Agent Instructions</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Boolean</dataType>
+        <description>Runtime condition evaluation for if statements</description>
+        <developerName>AgentScriptInternal_condition_1</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Runtime Condition 1</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>The next topic to be visited</description>
+        <developerName>AgentScriptInternal_next_topic</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Next Topic</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>Access level to grant when sharing a Slack canvas (e.g., view, edit).</description>
+        <developerName>access_level</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Access Level</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>JSON array of submittable forecast categories for the resolved ForecastingType, populated by Get_Forecasting_Context each turn. Format: [{&quot;apiName&quot;:&quot;CommitForecast&quot;,&quot;label&quot;:&quot;Commit&quot;,&quot;measure&quot;:&quot;amount&quot;},...]. ClosedOnly excluded. MostLikely only present wh</description>
+        <developerName>availableCategories</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Available Categories</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>JSON array of territories the resolved user can submit forecasts for, populated by Get_Forecasting_Context each turn. Format: [{&quot;territoryId&quot;:&quot;0MI...&quot;,&quot;label&quot;:&quot;Eastern Region (Jane Doe)&quot;},...]. Empty for role-hierarchy forecasting types and when the user</description>
+        <developerName>availableTerritories</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Available Territories</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>Gate main data action calling with value as @variables.mainRecordId + &apos;:&apos; + @variables.currentIntentCode</description>
+        <developerName>crmDataFetched</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Crm Data Fetched</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>The account id either same as mainRecordId or derived from the parent account.</description>
+        <developerName>currentAccountId</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Current Account Id</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>The account name either same as currentRecordName or derived from the parent account.</description>
+        <developerName>currentAccountName</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Current Account Name</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>Tracks the current intent code for the utterance (e.g., pov_meeting_prep, conversation_insights). Cleared after utterance processing completes.</description>
+        <developerName>currentIntentCode</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Current Intent Code</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>The Salesforce object API name extracted from the user&apos;s utterance (e.g., &apos;Account&apos;, &apos;Opportunity&apos;).</description>
+        <developerName>currentObjectType</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Current Object Type</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>The ID of the record on the user&apos;s screen. It may not relate to the user&apos;s input. Only use this if the user input mentions &apos;this&apos;, &apos;current&apos;, &apos;the record&apos;, etc. If in doubt, don&apos;t use it.</description>
+        <developerName>currentRecordId</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Current Record Id</label>
+        <visibility>External</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>The record name extracted from the user&apos;s utterance.</description>
+        <developerName>currentRecordName</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Current Record Name</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>Explicit User ID (005) of the forecast target. Resolved by Forecasting_Specialist&apos;s own type-scoped Identify_Record_by_Name(objectApiName=&quot;User&quot;) lookup in STEP 1 Case B (&quot;Sarah&apos;s forecast&quot;), OR bound directly from an explicit 005 id the Forecasting page</description>
+        <developerName>forecastTargetUserId</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Forecast Target User Id</label>
+        <visibility>External</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>Saved getActivitiesTimeline output from before reasoning call</description>
+        <developerName>getActivitiesTimelineResult</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Get Activities Timeline Result</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>Saved getRecordDetails output from before reasoning call</description>
+        <developerName>getRecordDetailsResult</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Get Record Details Result</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <collectionType>List</collectionType>
+        <dataType>Object</dataType>
+        <description>Saved getRelatedEmail output from before reasoning call</description>
+        <developerName>getRelatedEmailResult</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Get Related Email Result</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <collectionType>List</collectionType>
+        <dataType>Object</dataType>
+        <description>Saved getRelatedNotes output from before reasoning call</description>
+        <developerName>getRelatedNotesResult</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Get Related Notes Result</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>The single explicit forecast category apiName the user named this turn, extracted and set by STEP 1.5 or Step Q3 in Forecasting_Specialist and resolved against availableCategories. A cell-specific request names exactly ONE category (the clicked cell&apos;s), s</description>
+        <developerName>inputCategory</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Input Category</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>Explicit ForecastingType ID extracted from the utterance or calling page&apos;s context this turn, set by STEP 1.5 in Forecasting_Specialist. Also settable directly by the Forecasting page (via the Ask Agentforce launch&apos;s context variables) so a clicked cell&apos;s</description>
+        <developerName>inputForecastTypeId</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Input Forecast Type Id</label>
+        <visibility>External</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>Explicit ForecastingPeriod ID extracted from the utterance or calling page&apos;s context this turn, set by STEP 1.5 in Forecasting_Specialist. Also settable directly by the Forecasting page (via the Ask Agentforce launch&apos;s context variables) so a clicked cell</description>
+        <developerName>inputPeriodId</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Input Period Id</label>
+        <visibility>External</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>Explicit Territory2 ID extracted from the utterance or calling page&apos;s context this turn, set by STEP 1.5 in Forecasting_Specialist. Also settable directly by the Forecasting page (via the Ask Agentforce launch&apos;s context variables) so a clicked cell&apos;s terr</description>
+        <developerName>inputTerritoryId</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Input Territory Id</label>
+        <visibility>External</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>&apos;true&apos; when the resolved ForecastingType measures dollar amounts; &apos;false&apos; for quantity-based types. Populated by Get_Forecasting_Context each turn.</description>
+        <developerName>isAmountType</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Is Amount Type</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>The ID of the record that the agent is working on now, could come from the page context or user&apos;s uttereance.</description>
+        <developerName>mainRecordId</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Main Record Id</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Boolean</dataType>
+        <description>Set to True in before_reasoning when Identify_Record_by_Name returns more than one result. Lets reasoning distinguish &apos;multiple matches — show disambiguation list&apos; from &apos;zero matches — show not found error&apos;.</description>
+        <developerName>multipleRecordsFound</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Multiple Records Found</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>Set by Forecasting_Specialist&apos;s STEP 1.5 when it detects a changed period/type/territory/category mid-conversation: the mandatory context rerun (Get_Forecasting_Context + Set_Forecasting_Context_Vars) runs, then the turn stops immediately instead of also</description>
+        <developerName>pendingForecastingIntent</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Pending Forecasting Intent</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <collectionType>List</collectionType>
+        <dataType>Text</dataType>
+        <description>Forecast category apiNames to filter by this turn, populated by Get_Forecasting_Context each turn: a single-element list holding the validated inputCategory value when that variable is bound (the user named one category), otherwise the resolved Forecastin</description>
+        <developerName>resolvedForecastingCategories</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Resolved Forecasting Categories</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>Salesforce ID of the active ForecastingType for the session user, populated by Get_Forecasting_Context in before_reasoning.</description>
+        <developerName>resolvedForecastingTypeId</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Resolved Forecasting Type Id</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>ID of the ForecastingPeriod that brackets today&apos;s date, populated by Get_Forecasting_Context in before_reasoning.</description>
+        <developerName>resolvedPeriodId</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Resolved Period Id</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>The User ID actually used by Get_Forecasting_Context: the resolved forecastTargetUserId if set (by a Case B name lookup or a Case B2 explicit/page-bound 005 id), otherwise the session user ID. Passed to Generate_Submission_Summary and Submit_Forecast as t</description>
+        <developerName>resolvedUserId</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Resolved User Id</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>Comma-separated list of Slack channel IDs to share a canvas with.</description>
+        <developerName>slack_channel_ids</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Slack Channel Ids</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>Comma-separated list of Slack user IDs to share a canvas with.</description>
+        <developerName>slack_user_ids</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Slack User Ids</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Date</dataType>
+        <description>The date in YYYY-MM-DD format 30 days before today</description>
+        <developerName>thirtyDaysAgo</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Thirty Days Ago</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Date</dataType>
+        <description>today&apos;s date in YYYY-MM-DD format</description>
+        <developerName>today</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Today</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>The 0LQ/6qr Voice or Video Call Id, set via Set_TranscriptCallId only AFTER a valid Get_Conversation_Intelligence call, that gates and supplies the recordId for Get_Conversation_Transcript. Empty means the transcript action is not yet callable.</description>
+        <developerName>transcriptCallId</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Transcript Call Id</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <copilotPrimaryLanguage>en_US</copilotPrimaryLanguage>
+    <copilotSecondaryLanguages>all_languages</copilotSecondaryLanguages>
+    <genAiPlannerName>SalesAgent_v1</genAiPlannerName>
+    <isScriptCompatibleAgent>true</isScriptCompatibleAgent>
+    <knowledgeActionEnabled>false</knowledgeActionEnabled>
+    <knowledgeFallbackEnabled>false</knowledgeFallbackEnabled>
+    <planner>
+        <fullName>SalesAgent_v1</fullName>
+        <agentGraphRef>20ZWC000001yD6g</agentGraphRef>
+        <agentScript>20ZWC000001yD0E</agentScript>
+        <description>Help sales reps through every step of the sales process. Customize your agent with skills to fit your sales team&apos;s needs.</description>
+        <localTopicLinks>
+            <genAiPluginName>CustomerCommunication</genAiPluginName>
+        </localTopicLinks>
+        <localTopicLinks>
+            <genAiPluginName>Forecasting_Specialist</genAiPluginName>
+        </localTopicLinks>
+        <localTopicLinks>
+            <genAiPluginName>PipelineManagementFieldUpdates</genAiPluginName>
+        </localTopicLinks>
+        <localTopicLinks>
+            <genAiPluginName>RecordManagement</genAiPluginName>
+        </localTopicLinks>
+        <localTopicLinks>
+            <genAiPluginName>RecordRetrieval</genAiPluginName>
+        </localTopicLinks>
+        <localTopicLinks>
+            <genAiPluginName>SalesManagementRouting</genAiPluginName>
+        </localTopicLinks>
+        <localTopicLinks>
+            <genAiPluginName>SalesResearch</genAiPluginName>
+        </localTopicLinks>
+        <localTopicLinks>
+            <genAiPluginName>SlackNotifications</genAiPluginName>
+        </localTopicLinks>
+        <localTopicLinks>
+            <genAiPluginName>SlackOperations</genAiPluginName>
+        </localTopicLinks>
+        <localTopicLinks>
+            <genAiPluginName>WebRetrieval</genAiPluginName>
+        </localTopicLinks>
+        <localTopics>
+            <canEscalate>false</canEscalate>
+            <description>Handle user queries for personalized communication or written contact. This can involve sending meeting requests, scheduling meetings through emails, writing to a contact, or creating documents for customers.</description>
+            <genAiPluginInstructions>
+                <description>You&apos;re an AI Sales agent that helps sales reps throughout the sales process.</description>
+                <developerName>instruction0_179WC0000011rWR</developerName>
+                <language>en_US</language>
+                <masterLabel>instruction0_179WC0000011rWR</masterLabel>
+                <sortOrder>1</sortOrder>
+            </genAiPluginInstructions>
+            <language>en_US</language>
+            <localActionLinks>
+                <functionName>DraftOrReviseEmail</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>QueryRecords</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>IdentifyRecordByName</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>SendMeetingRequest</functionName>
+            </localActionLinks>
+            <localActions>
+                <description>Creates an email draft or revises the latest generated email based on user input.</description>
+                <invocationTarget>getDraftOrReviseEmailPrompt</invocationTarget>
+                <invocationTargetType>standardInvocableAction</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>DraftOrReviseEmail</localDeveloperName>
+                <masterLabel>Draft or Revise Email</masterLabel>
+                <progressIndicatorMessage>Crafting your email</progressIndicatorMessage>
+                <source>EmployeeCopilot__DraftOrReviseEmail</source>
+            </localActions>
+            <localActions>
+                <description>Searches for Salesforce CRM records by name and returns a list of matching Salesforce CRM record IDs.</description>
+                <invocationTarget>identifyRecordByName</invocationTarget>
+                <invocationTargetType>standardInvocableAction</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>IdentifyRecordByName</localDeveloperName>
+                <masterLabel>Identify Record by Name</masterLabel>
+                <source>EmployeeCopilot__IdentifyRecordByName</source>
+            </localActions>
+            <localActions>
+                <description>Finds and retrieves Salesforce CRM records based on a natural-language request and specific conditions.</description>
+                <invocationTarget>queryRecords</invocationTarget>
+                <invocationTargetType>standardInvocableAction</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>QueryRecords</localDeveloperName>
+                <masterLabel>Query Records</masterLabel>
+                <progressIndicatorMessage>Querying records</progressIndicatorMessage>
+                <source>EmployeeCopilot__QueryRecords</source>
+            </localActions>
+            <localActions>
+                <description>Drafts a message to the recipient with possible time slots or a link to access the calendar of the sender to schedule a sales meeting.</description>
+                <invocationTarget>sendMeetingRequest</invocationTarget>
+                <invocationTargetType>standardInvocableAction</invocationTargetType>
+                <isConfirmationRequired>true</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>SendMeetingRequest</localDeveloperName>
+                <masterLabel>Send Meeting Request</masterLabel>
+                <progressIndicatorMessage>Drafting your meeting request</progressIndicatorMessage>
+                <source>Sales__SendMeetingRequest</source>
+            </localActions>
+            <localDeveloperName>CustomerCommunication</localDeveloperName>
+            <masterLabel>Customer Communication</masterLabel>
+            <pluginType>Topic</pluginType>
+        </localTopics>
+        <localTopics>
+            <canEscalate>false</canEscalate>
+            <description>Specialist subagent for forecasting: generating a submission note, updating category adjustments, submitting the forecast, and summarizing a manager&apos;s team forecast.</description>
+            <genAiPluginInstructions>
+                <description>You&apos;re an AI Sales agent that helps sales reps throughout the sales process.</description>
+                <developerName>instruction0_179WC0000011rWT</developerName>
+                <language>en_US</language>
+                <masterLabel>instruction0_179WC0000011rWT</masterLabel>
+                <sortOrder>1</sortOrder>
+            </genAiPluginInstructions>
+            <language>en_US</language>
+            <localActionLinks>
+                <functionName>Generate_Submission_Summary</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>Get_Forecasting_Context</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>Get_Opportunity_Score</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>Get_Opportunity_Snapshot</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>Identify_Record_by_Name</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>Submit_Forecast</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>Get_Forecasting_Team_Data_Snapshot</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>Get_Weekly_Forecast_Data</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>Get_Forecasting_Opp_Momentum</functionName>
+            </localActionLinks>
+            <localActions>
+                <description>Invokes the RepSubmissionSummary prompt template with 3 PromptFlow data providers (SubmissionContext, SubmissionDeals, DealActivities) to generate a first-person HTML forecast submission note for the forecast owner identified by userId. Provides quota attainment, per-deal updates with stage/amount/date deltas since last submission, and upcoming activity highlights. forecastingTypeId, periodId, and userId are resolved by Get_Forecasting_Context. Note generation is self-only — the action enforces the same self-user check as Submit_Forecast and rejects any owner other than the running user.</description>
+                <invocationTarget>genForecastSubmissionNote</invocationTarget>
+                <invocationTargetType>standardInvocableAction</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>Generate_Submission_Summary</localDeveloperName>
+                <masterLabel>Generate Forecast Submission Note</masterLabel>
+                <progressIndicatorMessage>Generating your forecast submission note</progressIndicatorMessage>
+                <source>forecasting_agent__GenerateSubmissionSummary</source>
+            </localActions>
+            <localActions>
+                <description>Fetches forecasting context for a given user: active ForecastingType ID (validated directly if supplied, else resolved via ForecastingUserPreference then org default) and the current ForecastingPeriod ID (always the period bracketing today when periodId was not supplied — no guided pick). Pass userId to fetch context for a specific user; leave blank to default to the session user. forecastTypeId/periodId/territoryId are optional: when the calling page&apos;s context or the utterance already supplies one (see STEP 1.5), passing it here validates and binds it directly instead of resolving it — an unknown or inaccessible id halts with an error rather than silently defaulting. Called from reasoning in STEP 2 on every turn.</description>
+                <invocationTarget>getForecastingAgentContext</invocationTarget>
+                <invocationTargetType>standardInvocableAction</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+                <localDeveloperName>Get_Forecasting_Context</localDeveloperName>
+                <masterLabel>Get Forecasting Context</masterLabel>
+                <source>forecasting_agent__GetForecastingAgentContext</source>
+            </localActions>
+            <localActions>
+                <description>Retrieves the opportunities that moved in the last 7 days for the Forecasting cell — Forecasting category upgraded/degraded or close date slipped/pulled-in — as the ranked, capped Key Pipeline Shifts data. Read-only; no side effects. forecastingTypeId, periodId, and userId come from variables resolved in STEP 2; territoryId applies only to territory-hierarchy types.</description>
+                <invocationTarget>getFrcstOppMomentumSnapshot</invocationTarget>
+                <invocationTargetType>standardInvocableAction</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>Get_Forecasting_Opp_Momentum</localDeveloperName>
+                <masterLabel>Get Forecasting Opp Momentum</masterLabel>
+                <progressIndicatorMessage>Checking what moved in your pipeline</progressIndicatorMessage>
+                <source>forecasting_agent__GetFrcstOppMomentumSnapshot</source>
+            </localActions>
+            <localActions>
+                <description>Read-only. Retrieves a manager&apos;s team forecast for the period as a three-table CSV: Team Rollup (Reps) (the direct reports&apos; submitted values summed per category, plus the summed rep quota — excludes the manager&apos;s own submission and deals), Submission Compliance (which team members have or have not submitted), and Per-Member Breakdown (each direct report&apos;s per-category values). Values are currency amounts for amount-based forecasting types and unit quantities for quantity-based types. Team membership is resolved server-side from the manager&apos;s role hierarchy. forecastingTypeId, periodId, and userId are resolved by Get_Forecasting_Context. Does not include deal-level or opportunity-score data and performs no manager-judgement scoring.</description>
+                <invocationTarget>getForecastingTeamDataSnapshot</invocationTarget>
+                <invocationTargetType>standardInvocableAction</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>Get_Forecasting_Team_Data_Snapshot</localDeveloperName>
+                <masterLabel>Get Forecasting Team Data Snapshot</masterLabel>
+                <progressIndicatorMessage>Gathering your team&apos;s forecast numbers</progressIndicatorMessage>
+                <source>forecasting_agent__GetForecastingTeamDataSnapshot</source>
+            </localActions>
+            <localActions>
+                <description>Read-only. Retrieves per-opportunity Win Probability (Opportunity Score) data for the deals in a forecast scope: one row per opportunity keyed by OpportunityId, with the numeric Score, its ScoreBucket (HIGH/MEDIUM/LOW), the week-over-week Trend (UP/DOWN/empty), and the top Strengths and Gaps behind the score. Returned in the same order and for the same opportunities as Get_Opportunity_Snapshot, so its rows join to that snapshot on OpportunityId = Id. forecastingTypeId, periodId, and userId are resolved by Get_Forecasting_Context; forecastingCategories is the same resolved category scope passed to Get_Opportunity_Snapshot. Used to rank the deals worth focusing on to meet quota.</description>
+                <invocationTarget>getOpportunityScoreSnapshot</invocationTarget>
+                <invocationTargetType>standardInvocableAction</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>Get_Opportunity_Score</localDeveloperName>
+                <masterLabel>Get Opportunity Score</masterLabel>
+                <progressIndicatorMessage>Scoring your open deals</progressIndicatorMessage>
+                <source>forecasting_agent__GetOpportunityScoreSnapshot</source>
+            </localActions>
+            <localActions>
+                <description>Read-only. Retrieves opportunity-level detail for a forecast category: one row per opportunity with target value, stage, forecast category, probability, close date, next step, and the prior-value columns (PrevStage, PrevForecastCategory, PrevCloseDate) needed to call out movement. forecastingTypeId, periodId, and userId are resolved by Get_Forecasting_Context; forecastingCategories is required (Step Q3 resolves it — this action does not return all categories when omitted). Used to drill into the deals behind a forecast category.</description>
+                <invocationTarget>getOpportunitySnapshot</invocationTarget>
+                <invocationTargetType>standardInvocableAction</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>Get_Opportunity_Snapshot</localDeveloperName>
+                <masterLabel>Get Opportunity Snapshot</masterLabel>
+                <progressIndicatorMessage>Gathering the deals behind your forecast</progressIndicatorMessage>
+                <source>forecasting_agent__GetOpportunitySnapshot</source>
+            </localActions>
+            <localActions>
+                <description>Retrieves the current forecast snapshot data. Returns an Overview (period, quota, last submission date) and per-category breakdown (current and prior-week amounts). Read-only; no side effects. forecastingTypeId, periodId, and userId come from variables resolved in STEP 2.</description>
+                <invocationTarget>getForecastingDataSnapshot</invocationTarget>
+                <invocationTargetType>standardInvocableAction</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>Get_Weekly_Forecast_Data</localDeveloperName>
+                <masterLabel>Get Weekly Forecast Data</masterLabel>
+                <progressIndicatorMessage>Gathering your weekly forecast data</progressIndicatorMessage>
+                <source>forecasting_agent__GetForecastingDataSnapshot</source>
+            </localActions>
+            <localActions>
+                <description>Searches for a Salesforce User record by name to resolve their User ID for forecast lookup.</description>
+                <invocationTarget>identifyRecordByName</invocationTarget>
+                <invocationTargetType>standardInvocableAction</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>Identify_Record_by_Name</localDeveloperName>
+                <masterLabel>Identify Record by Name</masterLabel>
+                <source>EmployeeCopilot__IdentifyRecordByName</source>
+            </localActions>
+            <localActions>
+                <description>Submits the forecast for the current period by creating a ForecastingSubmission + ForecastingSubmissionItems. Requires explicit user confirmation. Submission note may be the output of Generate_Submission_Summary, free-form user text, or empty. The recommended flow is generate the note, let the rep review/edit it, then pass the final text as submissionNote. forecastingTypeId, periodId, and userId come from variables resolved in STEP 2.</description>
+                <invocationTarget>submitForecast</invocationTarget>
+                <invocationTargetType>standardInvocableAction</invocationTargetType>
+                <isConfirmationRequired>true</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>Submit_Forecast</localDeveloperName>
+                <masterLabel>Submit Forecast</masterLabel>
+                <progressIndicatorMessage>Submitting your forecast</progressIndicatorMessage>
+                <source>forecasting_agent__SubmitForecast</source>
+            </localActions>
+            <localDeveloperName>Forecasting_Specialist</localDeveloperName>
+            <masterLabel>Forecasting Specialist</masterLabel>
+            <pluginType>Topic</pluginType>
+        </localTopics>
+        <localTopics>
+            <canEscalate>false</canEscalate>
+            <description>Suggest field updates and provide recommendations for opportunity records only.</description>
+            <genAiPluginInstructions>
+                <description>You&apos;re an AI Sales agent that helps sales reps throughout the sales process.</description>
+                <developerName>instruction0_179WC0000011rWM</developerName>
+                <language>en_US</language>
+                <masterLabel>instruction0_179WC0000011rWM</masterLabel>
+                <sortOrder>1</sortOrder>
+            </genAiPluginInstructions>
+            <language>en_US</language>
+            <localActionLinks>
+                <functionName>SuggestOppNextStep</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>Identify_Record_by_Name</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>SuggestOppStage</functionName>
+            </localActionLinks>
+            <localActions>
+                <description>Searches for Salesforce CRM records by name and returns a list of matching Salesforce CRM record IDs.</description>
+                <invocationTarget>identifyRecordByName</invocationTarget>
+                <invocationTargetType>standardInvocableAction</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>Identify_Record_by_Name</localDeveloperName>
+                <masterLabel>Identify Record by Name</masterLabel>
+                <source>EmployeeCopilot__IdentifyRecordByName</source>
+            </localActions>
+            <localActions>
+                <description>Identifies and suggests a value for the Next Step field on an opportunity.</description>
+                <invocationTarget>sales_pipe_mgmt__RecommendNextStepforOpp</invocationTarget>
+                <invocationTargetType>generatePromptResponse</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>SuggestOppNextStep</localDeveloperName>
+                <masterLabel>Suggest Next Step for Opportunity</masterLabel>
+                <progressIndicatorMessage>Suggesting Next Step for the Opportunity</progressIndicatorMessage>
+                <source>sales_pipe_mgmt__SuggestOppNextStep</source>
+            </localActions>
+            <localActions>
+                <description>Identifies and suggests the appropriate stage for an opportunity.</description>
+                <invocationTarget>sales_pipe_mgmt__RecommendStageforOpp</invocationTarget>
+                <invocationTargetType>generatePromptResponse</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>SuggestOppStage</localDeveloperName>
+                <masterLabel>Suggest Stage for Opportunity</masterLabel>
+                <progressIndicatorMessage>Suggesting Stage for the Opportunity</progressIndicatorMessage>
+                <source>sales_pipe_mgmt__SuggestOppStage</source>
+            </localActions>
+            <localDeveloperName>PipelineManagementFieldUpdates</localDeveloperName>
+            <masterLabel>Pipeline Management Field Updates</masterLabel>
+            <pluginType>Topic</pluginType>
+        </localTopics>
+        <localTopics>
+            <canEscalate>false</canEscalate>
+            <description>Handle record field updates. Extract fields and values from user input, then update records. Manage the AiGenActionItem lifecycle for Slack-initiated field update suggestions.</description>
+            <genAiPluginInstructions>
+                <description>You&apos;re an AI Sales agent that helps sales reps throughout the sales process.</description>
+                <developerName>instruction0_179WC0000011rWP</developerName>
+                <language>en_US</language>
+                <masterLabel>instruction0_179WC0000011rWP</masterLabel>
+                <sortOrder>1</sortOrder>
+            </genAiPluginInstructions>
+            <language>en_US</language>
+            <localActionLinks>
+                <functionName>UpdateRecordFields</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>Update_AiGen_ActionItem</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>ExtractFieldsAndValuesFromUserInput</functionName>
+            </localActionLinks>
+            <localActions>
+                <description>Extracts Salesforce CRM record fields and their corresponding field values from the user input. This action must run before UpdateRecordFields to convert user input to a Salesforce sObject.</description>
+                <invocationTarget>getRecordFieldsAndValues</invocationTarget>
+                <invocationTargetType>standardInvocableAction</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>ExtractFieldsAndValuesFromUserInput</localDeveloperName>
+                <masterLabel>Extract Fields And Values From User Input</masterLabel>
+                <progressIndicatorMessage>Preparing your changes</progressIndicatorMessage>
+                <source>EmployeeCopilot__ExtractFieldsAndValuesFromUserInput</source>
+            </localActions>
+            <localActions>
+                <description>Updates fields on a Salesforce CRM record. CRITICAL: ExtractFieldsAndValuesFromUserInput must be called first to extract the record&apos;s fields and values. This action receives the extracted field data and performs the actual update.</description>
+                <invocationTarget>einsteinCopilotUpdateRecord</invocationTarget>
+                <invocationTargetType>standardInvocableAction</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>UpdateRecordFields</localDeveloperName>
+                <masterLabel>Update Record</masterLabel>
+                <progressIndicatorMessage>Making updates</progressIndicatorMessage>
+                <source>EmployeeCopilot__UpdateRecordFields</source>
+            </localActions>
+            <localActions>
+                <description>Updates the status of an AI-generated action item. Used to track lifecycle of suggestions from Slack notifications.</description>
+                <invocationTarget>updateAiGenActionItem</invocationTarget>
+                <invocationTargetType>standardInvocableAction</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+                <localDeveloperName>Update_AiGen_ActionItem</localDeveloperName>
+                <masterLabel>Update AI Gen Action Item</masterLabel>
+                <source>SalesMgmt__UpdateAiGenActionItem</source>
+            </localActions>
+            <localDeveloperName>RecordManagement</localDeveloperName>
+            <masterLabel>Record Management</masterLabel>
+            <pluginType>Topic</pluginType>
+        </localTopics>
+        <localTopics>
+            <canEscalate>false</canEscalate>
+            <description>Identify records and get their details. Handle requests for accounts and account plans, activities timeline, activity details, related notes, related emails, and conversation intelligence.</description>
+            <genAiPluginInstructions>
+                <description>You&apos;re an AI Sales agent that helps sales reps throughout the sales process.</description>
+                <developerName>instruction0_179WC0000011rWN</developerName>
+                <language>en_US</language>
+                <masterLabel>instruction0_179WC0000011rWN</masterLabel>
+                <sortOrder>1</sortOrder>
+            </genAiPluginInstructions>
+            <language>en_US</language>
+            <localActionLinks>
+                <functionName>Identify_Record_by_Name</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>Get_Conversation_Transcript</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>Get_Record_Details</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>Identify_Key_Contacts</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>SearchSlack</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>Search_Conversations</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>Query_Records</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>Get_Activities_Timeline</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>Get_Related_Notes</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>Get_Related_Emails</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>Get_Conversation_Intelligence</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>Get_Account_and_Account_Plan</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>Get_Activity_Details</functionName>
+            </localActionLinks>
+            <localActions>
+                <description>Queries account and one related account plan. Use when the caller needs account details and associated account plan information for a specific account. Pass the Salesforce record ID of the account (accountId).</description>
+                <invocationTarget>SalesAcctMgmt__GetAcctAndAcctPlan</invocationTarget>
+                <invocationTargetType>flow</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>Get_Account_and_Account_Plan</localDeveloperName>
+                <masterLabel>Get Account and Account Plan</masterLabel>
+                <progressIndicatorMessage>Retrieving records</progressIndicatorMessage>
+                <source>SalesAcctMgmt__GetAccountAndAccountPlan</source>
+            </localActions>
+            <localActions>
+                <description>Retrieves a timeline of activities (Calls, Emails, Events, Tasks) for a specific record (Account, Opportunity, Contact, Lead, etc.).</description>
+                <invocationTarget>getActivitiesTimeline</invocationTarget>
+                <invocationTargetType>standardInvocableAction</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>Get_Activities_Timeline</localDeveloperName>
+                <masterLabel>Get Activities Timeline</masterLabel>
+                <progressIndicatorMessage>Retrieving activities timeline</progressIndicatorMessage>
+                <source>EmployeeCopilot__GetActivitiesTimeline</source>
+            </localActions>
+            <localActions>
+                <description>Provides data about an activity record, including its content and other key details. The record type is strictly limited to a Call, Email, Event, or Task.</description>
+                <invocationTarget>getActivityDetails</invocationTarget>
+                <invocationTargetType>standardInvocableAction</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>Get_Activity_Details</localDeveloperName>
+                <masterLabel>Get Activity Details</masterLabel>
+                <progressIndicatorMessage>Retrieving activity details</progressIndicatorMessage>
+                <source>EmployeeCopilot__GetActivityDetails</source>
+            </localActions>
+            <localActions>
+                <description>Retrieves conversation intelligence for a record.</description>
+                <invocationTarget>SalesMgmt__GetConversationIntelligence</invocationTarget>
+                <invocationTargetType>flow</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>Get_Conversation_Intelligence</localDeveloperName>
+                <masterLabel>Get Conversation Intelligence</masterLabel>
+                <progressIndicatorMessage>Retrieving conversation intelligence</progressIndicatorMessage>
+                <source>SalesMgmt__GetConversationIntelligence</source>
+            </localActions>
+            <localActions>
+                <description>Gets the conversation transcript for a single voice or video call. Call only after Get_Conversation_Intelligence has been executed for the same call; pass the Voice Call Id or Video Call Id (activityId starting with &apos;0LQ&apos; or &apos;6qr&apos;) as recordId.</description>
+                <invocationTarget>getConversationTranscript</invocationTarget>
+                <invocationTargetType>standardInvocableAction</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>Get_Conversation_Transcript</localDeveloperName>
+                <masterLabel>Get Conversation Transcript</masterLabel>
+                <progressIndicatorMessage>Getting conversations</progressIndicatorMessage>
+                <source>SalesMgmt__GetConversationTranscript</source>
+            </localActions>
+            <localActions>
+                <description>Get details for a Salesforce CRM record by ID or fetch related records. For ID search: pass the record ID directly (always returns exactly 1 result or null if not found). For related records: pass the parent record ID to retrieve related records. Format results as: Query: Name/ID matching &apos;[ID]&apos; (for ID search) or Query: Related objects to Name/ID &apos;[ID]&apos; (for related records)
+Result:
+ID1, ObjectType1, Name1
+ID2, ObjectType2, Name2</description>
+                <invocationTarget>getDataForGrounding</invocationTarget>
+                <invocationTargetType>standardInvocableAction</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>Get_Record_Details</localDeveloperName>
+                <masterLabel>Get Record Details</masterLabel>
+                <progressIndicatorMessage>Getting details</progressIndicatorMessage>
+                <source>EmployeeCopilot__GetRecordDetails</source>
+            </localActions>
+            <localActions>
+                <description>Retrieves emails related to a record (Account, Opportunity, Contact, Lead, etc.).</description>
+                <invocationTarget>getRelatedEmails</invocationTarget>
+                <invocationTargetType>standardInvocableAction</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>Get_Related_Emails</localDeveloperName>
+                <masterLabel>Get Related Emails</masterLabel>
+                <progressIndicatorMessage>Retrieving related emails</progressIndicatorMessage>
+                <source>SalesMgmt__GetRelatedEmails</source>
+            </localActions>
+            <localActions>
+                <description>Retrieves notes related to a record (Account, Opportunity, Contact, Lead, etc.).</description>
+                <invocationTarget>SalesMgmt__GetRelatedContentNotes</invocationTarget>
+                <invocationTargetType>flow</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>Get_Related_Notes</localDeveloperName>
+                <masterLabel>Get Related Notes</masterLabel>
+                <progressIndicatorMessage>Getting notes</progressIndicatorMessage>
+                <source>SalesMgmt__GetRelatedNotes</source>
+            </localActions>
+            <localActions>
+                <description>Identifies key contacts for an Opportunity or Account — people who can influence, obstruct, impede, decide, or are involved in the final outcome of a deal. The primary contact is also a key contact. Identify_Record_by_Name MUST have been called prior to obtain the Opportunity or Account ID.</description>
+                <invocationTarget>reviewBuyingCommittee</invocationTarget>
+                <invocationTargetType>standardInvocableAction</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>Identify_Key_Contacts</localDeveloperName>
+                <masterLabel>Identify Key Contacts</masterLabel>
+                <progressIndicatorMessage>Finding key contacts</progressIndicatorMessage>
+                <source>Sales__IdentifyKeyContacts</source>
+            </localActions>
+            <localActions>
+                <description>Searches for Salesforce CRM records by name and returns a list of matching Salesforce CRM record IDs.</description>
+                <invocationTarget>identifyRecordByName</invocationTarget>
+                <invocationTargetType>standardInvocableAction</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>Identify_Record_by_Name</localDeveloperName>
+                <masterLabel>Identify Record by Name</masterLabel>
+                <source>EmployeeCopilot__IdentifyRecordByName</source>
+            </localActions>
+            <localActions>
+                <description>Finds and retrieves Salesforce CRM records based on a natural-language request and specific conditions, such as field values. This action automatically identifies the correct records and object type. The query input MUST be plain English (do NOT generate SOQL or SQL) and MUST mention the Salesforce object type (e.g., &apos;Find all OpportunityContactRole records for Opportunity 006...&apos;).</description>
+                <invocationTarget>queryRecords</invocationTarget>
+                <invocationTargetType>standardInvocableAction</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>Query_Records</localDeveloperName>
+                <masterLabel>Query Records</masterLabel>
+                <progressIndicatorMessage>Querying records</progressIndicatorMessage>
+                <source>EmployeeCopilot__QueryRecords</source>
+            </localActions>
+            <localActions>
+                <description>Searches Slack for messages, files, or enterprise content related to a record or account. Used to enrich research responses with internal Slack context. Mandatory for pov_meeting_prep, conversation_insights, and account_plan intents. Call in parallel with other retrieval actions. Fail gracefully if Slack is unavailable.</description>
+                <invocationTarget>slackAgentSearch</invocationTarget>
+                <invocationTargetType>standardInvocableAction</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>SearchSlack</localDeveloperName>
+                <masterLabel>Search Slack</masterLabel>
+                <progressIndicatorMessage>Searching Slack</progressIndicatorMessage>
+                <source>Slack__SearchSlack</source>
+            </localActions>
+            <localActions>
+                <description>Searches voice and video call transcripts for specific topics or keywords related to a record. Use for Deal Risk to surface blockers, objections, and risk signals across multiple conversations without retrieving full transcripts.</description>
+                <invocationTarget>searchConversations</invocationTarget>
+                <invocationTargetType>standardInvocableAction</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>Search_Conversations</localDeveloperName>
+                <masterLabel>Search Conversations</masterLabel>
+                <progressIndicatorMessage>Searching conversations</progressIndicatorMessage>
+                <source>SalesMgmt__SearchConversations</source>
+            </localActions>
+            <localDeveloperName>RecordRetrieval</localDeveloperName>
+            <masterLabel>Record Retrieval</masterLabel>
+            <pluginType>Topic</pluginType>
+        </localTopics>
+        <localTopics>
+            <canEscalate>false</canEscalate>
+            <description>Route user requests to specialized subagents based on record type and intent.</description>
+            <genAiPluginInstructions>
+                <description>You&apos;re an AI Sales agent that helps sales reps throughout the sales process.</description>
+                <developerName>instruction0_179WC0000011rWU</developerName>
+                <language>en_US</language>
+                <masterLabel>instruction0_179WC0000011rWU</masterLabel>
+                <sortOrder>1</sortOrder>
+            </genAiPluginInstructions>
+            <language>en_US</language>
+            <localDeveloperName>SalesManagementRouting</localDeveloperName>
+            <masterLabel>Sales Management Routing</masterLabel>
+            <pluginType>Topic</pluginType>
+        </localTopics>
+        <localTopics>
+            <canEscalate>false</canEscalate>
+            <description>Handle requests related to schema research, entities, rows, emails, conversation intelligence, briefs, and meeting preparation.</description>
+            <genAiPluginInstructions>
+                <description>You&apos;re an AI Sales agent that helps sales reps throughout the sales process.</description>
+                <developerName>instruction0_179WC0000011rWO</developerName>
+                <language>en_US</language>
+                <masterLabel>instruction0_179WC0000011rWO</masterLabel>
+                <sortOrder>1</sortOrder>
+            </genAiPluginInstructions>
+            <language>en_US</language>
+            <localActionLinks>
+                <functionName>AnswerQuestionsWithKnowledge</functionName>
+            </localActionLinks>
+            <localActions>
+                <description>Answers questions about company policies and procedures, troubleshooting steps, or product information. For example: “What is your return policy?” “How do I fix an issue?” or “What features does a product have?”</description>
+                <invocationTarget>streamKnowledgeSearch</invocationTarget>
+                <invocationTargetType>standardInvocableAction</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>AnswerQuestionsWithKnowledge</localDeveloperName>
+                <masterLabel>Answer Questions with Knowledge</masterLabel>
+                <progressIndicatorMessage>Getting answers</progressIndicatorMessage>
+                <source>EmployeeCopilot__AnswerQuestionsWithKnowledge</source>
+            </localActions>
+            <localDeveloperName>SalesResearch</localDeveloperName>
+            <masterLabel>Sales Research</masterLabel>
+            <pluginType>Topic</pluginType>
+        </localTopics>
+        <localTopics>
+            <canEscalate>false</canEscalate>
+            <description>Sends direct Slack messages (DMs) to specific named people. Use when the intent is to identify a Salesforce User by name or ID and notify them about sales activities, deal updates, or events. Choose this subagent when the goal is &apos;notify this person&apos; or &apos;DM this user&apos; — not for channel messages or Slack operations.</description>
+            <genAiPluginInstructions>
+                <description>You&apos;re an AI Sales agent that helps sales reps throughout the sales process.</description>
+                <developerName>instruction0_179WC0000011rWL</developerName>
+                <language>en_US</language>
+                <masterLabel>instruction0_179WC0000011rWL</masterLabel>
+                <sortOrder>1</sortOrder>
+            </genAiPluginInstructions>
+            <language>en_US</language>
+            <localActionLinks>
+                <functionName>Identify_Record_by_Name</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>SendMessageAsAgent</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>GetSlackUser</functionName>
+            </localActionLinks>
+            <localActions>
+                <description>Retrieves the Slack user ID for a given Salesforce user ID. Use this to find the corresponding Slack account for a Salesforce user before sending them a direct message.</description>
+                <invocationTarget>slackAgentGetUser</invocationTarget>
+                <invocationTargetType>standardInvocableAction</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>GetSlackUser</localDeveloperName>
+                <masterLabel>Get Slack User</masterLabel>
+                <progressIndicatorMessage>Finding Slack user</progressIndicatorMessage>
+                <source>Slack__GetSlackUser</source>
+            </localActions>
+            <localActions>
+                <description>Searches for Salesforce CRM records by name and returns a list of matching Salesforce CRM record IDs. Use to resolve user names to Salesforce User IDs.</description>
+                <invocationTarget>identifyRecordByName</invocationTarget>
+                <invocationTargetType>standardInvocableAction</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>Identify_Record_by_Name</localDeveloperName>
+                <masterLabel>Identify Record by Name</masterLabel>
+                <source>EmployeeCopilot__IdentifyRecordByName</source>
+            </localActions>
+            <localActions>
+                <description>Sends a message to a Slack user as the agent. Supports markdown formatting. Returns message URL and timestamp after sending.</description>
+                <invocationTarget>slackAgentDynamic__SendMessageAsAgent</invocationTarget>
+                <invocationTargetType>slack</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>SendMessageAsAgent</localDeveloperName>
+                <masterLabel>Send Message As Agent</masterLabel>
+                <progressIndicatorMessage>Sending Slack message</progressIndicatorMessage>
+                <source>Slack__SendMessageAsAgent</source>
+            </localActions>
+            <localDeveloperName>SlackNotifications</localDeveloperName>
+            <masterLabel>Slack Notifications</masterLabel>
+            <pluginType>Topic</pluginType>
+        </localTopics>
+        <localTopics>
+            <canEscalate>false</canEscalate>
+            <description>Handles Slack channel operations, canvases, searches, and summaries. Use when the primary intent is to: find Salesforce record-linked channels, send messages to channels (not person-specific DMs), create/update/share Slack canvases, search Slack content, or summarize channels. Do NOT use when the goal is a direct message or notification to a specific Salesforce User (by name or ID).</description>
+            <genAiPluginInstructions>
+                <description>You&apos;re an AI Sales agent that helps sales reps throughout the sales process.</description>
+                <developerName>instruction0_179WC0000011rWS</developerName>
+                <language>en_US</language>
+                <masterLabel>instruction0_179WC0000011rWS</masterLabel>
+                <sortOrder>1</sortOrder>
+            </genAiPluginInstructions>
+            <language>en_US</language>
+            <localActionLinks>
+                <functionName>SummarizeSlackChannel</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>UpdateSlackCanvas</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>LookupSlackRecordChannel</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>SendMessageToSlackChannel</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>ShareSlackCanvas</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>Identify_Record_by_Name</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>CreateSlackCanvas</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>SearchSlack</functionName>
+            </localActionLinks>
+            <localActions>
+                <description>Creates a new Slack Canvas with specified title and content</description>
+                <invocationTarget>slackAgentCreateCanvas</invocationTarget>
+                <invocationTargetType>standardInvocableAction</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>CreateSlackCanvas</localDeveloperName>
+                <masterLabel>Create Slack Canvas</masterLabel>
+                <progressIndicatorMessage>Creating canvas</progressIndicatorMessage>
+                <source>Slack__CreateSlackCanvas</source>
+            </localActions>
+            <localActions>
+                <description>Searches for Salesforce CRM records by name and returns a list of matching Salesforce CRM record IDs.</description>
+                <invocationTarget>identifyRecordByName</invocationTarget>
+                <invocationTargetType>standardInvocableAction</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>Identify_Record_by_Name</localDeveloperName>
+                <masterLabel>Identify Record by Name</masterLabel>
+                <source>EmployeeCopilot__IdentifyRecordByName</source>
+            </localActions>
+            <localActions>
+                <description>Finds the Slack channel associated with a Salesforce record ID</description>
+                <invocationTarget>slackAgentDynamic__LookupSlackRecordChannel</invocationTarget>
+                <invocationTargetType>slack</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>LookupSlackRecordChannel</localDeveloperName>
+                <masterLabel>Look Up Slack Record Channel</masterLabel>
+                <progressIndicatorMessage>Looking up Slack channel</progressIndicatorMessage>
+                <source>Slack__LookupSlackRecordChannel</source>
+            </localActions>
+            <localActions>
+                <description>Searches Slack for messages, files, or enterprise content using query modifiers</description>
+                <invocationTarget>slackAgentSearch</invocationTarget>
+                <invocationTargetType>standardInvocableAction</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>SearchSlack</localDeveloperName>
+                <masterLabel>Search Slack</masterLabel>
+                <progressIndicatorMessage>Searching Slack</progressIndicatorMessage>
+                <source>Slack__SearchSlack</source>
+            </localActions>
+            <localActions>
+                <description>Sends a message to a specific Slack channel</description>
+                <invocationTarget>slackAgentDynamic__SendMessageToSlackChannel</invocationTarget>
+                <invocationTargetType>slack</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>SendMessageToSlackChannel</localDeveloperName>
+                <masterLabel>Send Message to Slack Channel</masterLabel>
+                <progressIndicatorMessage>Sending message</progressIndicatorMessage>
+                <source>Slack__SendMessageToSlackChannel</source>
+            </localActions>
+            <localActions>
+                <description>Shares a Slack Canvas with a set of users and/or channels.
+If neither a list of Slack Users nor Slack Channels to to add to the channel is provided, ask the user for a list of Slack Users and/or Slack Channels to share the Canvas with.
+If the user does not provide an access level for the shared Canvas, ask the user for it.
+Upon successful completion, provide the user a friendly confirmation with a link to the canvas (in markdown) and at-mentions for the channels and/or Users the Canvas was shared with.</description>
+                <invocationTarget>slackAgentDynamic__ShareSlackCanvas</invocationTarget>
+                <invocationTargetType>slack</invocationTargetType>
+                <isConfirmationRequired>true</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>ShareSlackCanvas</localDeveloperName>
+                <masterLabel>Share a Slack Canvas</masterLabel>
+                <progressIndicatorMessage>Sharing a Slack canvas...</progressIndicatorMessage>
+                <source>Slack__ShareSlackCanvas</source>
+            </localActions>
+            <localActions>
+                <description>Summarizes the content and activity in a Slack channel</description>
+                <invocationTarget>slackAgentSummarizeChannel</invocationTarget>
+                <invocationTargetType>standardInvocableAction</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>SummarizeSlackChannel</localDeveloperName>
+                <masterLabel>Summarize Slack Channel</masterLabel>
+                <progressIndicatorMessage>Summarizing channel</progressIndicatorMessage>
+                <source>Slack__SummarizeSlackChannel</source>
+            </localActions>
+            <localActions>
+                <description>Updates an existing Slack Canvas with new content</description>
+                <invocationTarget>slackAgentUpdateCanvas</invocationTarget>
+                <invocationTargetType>standardInvocableAction</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>UpdateSlackCanvas</localDeveloperName>
+                <masterLabel>Update Slack Canvas</masterLabel>
+                <progressIndicatorMessage>Updating canvas</progressIndicatorMessage>
+                <source>Slack__UpdateSlackCanvas</source>
+            </localActions>
+            <localDeveloperName>SlackOperations</localDeveloperName>
+            <masterLabel>Slack Operations</masterLabel>
+            <pluginType>Topic</pluginType>
+        </localTopics>
+        <localTopics>
+            <canEscalate>false</canEscalate>
+            <description>Perform web searches and retrieve cached research for records. Support both CRM flow, which uses a recordId, and Direct Web flow, which doesn&apos;t use a CRM lookup.</description>
+            <genAiPluginInstructions>
+                <description>You&apos;re an AI Sales agent that helps sales reps throughout the sales process.</description>
+                <developerName>instruction0_179WC0000011rWQ</developerName>
+                <language>en_US</language>
+                <masterLabel>instruction0_179WC0000011rWQ</masterLabel>
+                <sortOrder>1</sortOrder>
+            </genAiPluginInstructions>
+            <language>en_US</language>
+            <localActionLinks>
+                <functionName>Get_Record_Research</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>Web_Search</functionName>
+            </localActionLinks>
+            <localActions>
+                <description>Queries AiResearchPromptResult for records from the last 30 days that are associated with a specific record ID. Then, summarizes the retrieved insights and research data for that record.</description>
+                <invocationTarget>SalesMgmt__GetRecordResearch</invocationTarget>
+                <invocationTargetType>flow</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>Get_Record_Research</localDeveloperName>
+                <masterLabel>Get Record Research</masterLabel>
+                <progressIndicatorMessage>Researching</progressIndicatorMessage>
+                <source>SalesMgmt__GetRecordResearch</source>
+            </localActions>
+            <localActions>
+                <description>Retrieves real-time or external information that isn&apos;t available in Salesforce CRM. Use it for questions about news, market trends, competitor details, and product comparisons, or when Salesforce answers need added context from the web.</description>
+                <invocationTarget>webSearchStream</invocationTarget>
+                <invocationTargetType>standardInvocableAction</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>Web_Search</localDeveloperName>
+                <masterLabel>Search The Web</masterLabel>
+                <progressIndicatorMessage>Searching the web</progressIndicatorMessage>
+                <source>EmployeeCopilot__WebSearch</source>
+            </localActions>
+            <localDeveloperName>WebRetrieval</localDeveloperName>
+            <masterLabel>Web Retrieval</masterLabel>
+            <pluginType>Topic</pluginType>
+        </localTopics>
+        <masterLabel>Sales Agent</masterLabel>
+        <plannerSurfaces>
+            <adaptiveResponseAllowed>true</adaptiveResponseAllowed>
+            <callRecordingAllowed>false</callRecordingAllowed>
+            <surface>SurfaceAction__Slack</surface>
+            <surfaceType>Slack</surfaceType>
+        </plannerSurfaces>
+        <plannerType>Atlas__ConcurrentMultiAgentOrchestration</plannerType>
+    </planner>
+    <smallTalkEnabled>false</smallTalkEnabled>
+    <staticPromptsEnabled>false</staticPromptsEnabled>
+    <status>Active</status>
+    <stopRecPrompts>false</stopRecPrompts>
+    <surfacesEnabled>false</surfacesEnabled>
+    <toneType>Casual</toneType>
+    <version>1</version>
+    <welcomeMessage>Hi there! I&apos;m your Sales Agent. I help you through every step of the sales process by automating time-consuming tasks like record updates and providing timely, data-informed suggestions. What would you like to work on today?</welcomeMessage>
+</AiAgentDefinitionVersion>

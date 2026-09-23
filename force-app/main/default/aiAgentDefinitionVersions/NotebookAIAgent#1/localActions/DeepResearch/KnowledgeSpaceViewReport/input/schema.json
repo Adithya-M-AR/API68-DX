@@ -1,0 +1,21 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "researchId" : {
+      "title" : "Research ID",
+      "description" : "The off-core research job ID for the completed research run whose report should be surfaced. If not provided, the action retrieves it from the current Knowledge Space session.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "deepResearchWorkflowAction" : {
+      "title" : "Deep Research Workflow Action",
+      "description" : "Workflow action identifier — must be VIEW_REPORT for this action. Set automatically by the LEX client when the run-research polling loop detects a completed report.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

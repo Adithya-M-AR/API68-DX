@@ -1,0 +1,15 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "csvOutput" : {
+      "title" : "CSV Output",
+      "description" : "Two-table CSV (Forecasting Overview + Category Breakdown) used as the data source for the weekly digest. This is intermediate data, NOT the reply: the Forecasting Specialist MUST transform it into the Markdown table described in Case [WEEKLY_DIGEST] Step C. Never show this raw CSV to the user.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

@@ -1,0 +1,15 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "transcript" : {
+      "title" : "Transcript",
+      "description" : "The conversation transcript for the specified voice or video call.",
+      "lightning:type" : "@apexClassType/ConnectApi__ConversationTranscript",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

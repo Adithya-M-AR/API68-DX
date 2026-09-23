@@ -1,0 +1,36 @@
+{
+  "required" : [ "forecastingTypeId", "periodId", "userId" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "forecastingTypeId" : {
+      "title" : "Forecasting Type ID",
+      "description" : "Salesforce ID of the active ForecastingType, from Get_Forecasting_Context.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "periodId" : {
+      "title" : "Period ID",
+      "description" : "Salesforce ID of the current ForecastingPeriod, from Get_Forecasting_Context.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "userId" : {
+      "title" : "User ID",
+      "description" : "Salesforce User ID (005...) of the forecast owner the note is generated for, from Get_Forecasting_Context. Must be the running user — note generation is self-only and rejects any other owner.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "territoryId" : {
+      "title" : "Territory ID",
+      "description" : "Optional Territory2 ID for territory-hierarchy forecast types. Required at runtime for such types (the action rejects a missing territory); blank for role-hierarchy types.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

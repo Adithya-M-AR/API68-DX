@@ -1,0 +1,15 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "csvOutput" : {
+      "title" : "CSV Output",
+      "description" : "Single-table CSV of the opportunities that moved, with columns Bucket (UPSIDE or SLIPPAGE), OpportunityId, OpportunityName, RawValue, CurrencyIsoCode, MovementPhrase, and NextStep. OpportunityId is the 18-char id and joins to Get_Opportunity_Snapshot / Get_Opportunity_Score on Id = OpportunityId. Upside rows come first, then slippage; both are already ranked and capped at 3. This is intermediate data, NOT the reply: the Forecasting Specialist MUST transform it into the Key Pipeline Shifts block described in Case [WEEKLY_DIGEST] Step C2. Never show this raw CSV to the user.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

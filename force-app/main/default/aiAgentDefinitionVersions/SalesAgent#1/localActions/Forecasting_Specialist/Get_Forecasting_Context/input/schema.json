@@ -1,0 +1,43 @@
+{
+  "required" : [ ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "userId" : {
+      "title" : "User ID",
+      "description" : "Salesforce User ID (005...) of the rep or manager. Blank defaults to session user.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : true,
+      "copilotAction:isUserInput" : false
+    },
+    "forecastTypeId" : {
+      "title" : "Forecasting Type ID",
+      "description" : "Optional. Salesforce ID of an active ForecastingType already known from the calling page's context or the utterance (STEP 1.5). When supplied, it is validated and bound directly, skipping default resolution; an unknown id halts with an error. Blank means resolve it.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "periodId" : {
+      "title" : "Period ID",
+      "description" : "Optional. Salesforce ID of a ForecastingPeriod already known from the calling page's context or the utterance (STEP 1.5). When supplied, it is validated and bound directly, skipping default resolution; an unknown id halts with an error. Blank means resolve it — always to the period bracketing today, silently.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "territoryId" : {
+      "title" : "Territory ID",
+      "description" : "Optional. Salesforce Territory2 ID already known from the calling page's context or the utterance (STEP 1.5), for territory-hierarchy ForecastingTypes. When supplied, it is validated against the resolved user's accessible territories and bound directly; a not-found or inaccessible id halts with an error. Blank means resolve it.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "categoryApiNames" : {
+      "title" : "Category API Name",
+      "description" : "Optional. A single forecast category api name already known from the calling page's context or the utterance (STEP 1.5); a cell-specific request names exactly one category. When supplied, it is validated against the type's displayed categories and bound directly; a category not in the displayed set halts with an error. Blank \"\" means default to the type's forecastable displayed categories (Commit, Best Case, Pipeline; Closed/Most Likely/Omitted/Custom excluded).",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

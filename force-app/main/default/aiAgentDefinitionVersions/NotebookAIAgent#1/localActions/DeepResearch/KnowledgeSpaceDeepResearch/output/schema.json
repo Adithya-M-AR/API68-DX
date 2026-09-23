@@ -1,0 +1,15 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "deepResearchResponse" : {
+      "title" : "Deep Research Response",
+      "description" : "Single JSON string: CreateResearchResponse from deep research (e.g. researchId/research_id, status, query, config, plan).",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

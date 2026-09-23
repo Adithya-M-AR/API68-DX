@@ -1,0 +1,36 @@
+{
+  "required" : [ "relatedRecordId", "searchQuery" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "relatedRecordId" : {
+      "title" : "Related Record ID",
+      "description" : "The unique ID of the parent record (typically the 006... Opportunity ID) whose related conversations should be searched.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : true,
+      "copilotAction:isUserInput" : false
+    },
+    "searchQuery" : {
+      "title" : "Search Query",
+      "description" : "Free-text query describing the topic, risk, blocker, or theme to search for across conversation transcripts.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "startDate" : {
+      "title" : "Start Date",
+      "description" : "Optional start of the date range to search. If omitted, searches the default recent window.",
+      "lightning:type" : "lightning__dateType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "endDate" : {
+      "title" : "End Date",
+      "description" : "Optional end of the date range to search. If omitted, searches up to today.",
+      "lightning:type" : "lightning__dateType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

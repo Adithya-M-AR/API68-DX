@@ -1,0 +1,15 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "csvOutput" : {
+      "title" : "Opportunity Snapshot CSV",
+      "description" : "Single-section CSV, '## Opportunity Snapshot': one row per opportunity with Id, Name, TargetValue, Stage, ForecastCategory, Probability, CloseDate, NextStep, LastModifiedDate, PrevStage, PrevForecastCategory, PrevCloseDate. Rendered as a plain-language deal list, not raw CSV.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

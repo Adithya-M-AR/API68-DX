@@ -1,0 +1,15 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "csvOutput" : {
+      "title" : "Opportunity Score Snapshot CSV",
+      "description" : "Single-section CSV, '## Opportunity Scores': one row per opportunity with OpportunityId, Score, ScoreBucket, Trend, Strengths, Gaps.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}
