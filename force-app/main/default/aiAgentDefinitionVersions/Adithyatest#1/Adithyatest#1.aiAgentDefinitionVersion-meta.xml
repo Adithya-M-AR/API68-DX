@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AiAgentDefinitionVersion xmlns="http://soap.sforce.com/2006/04/metadata">
+    <articleAnswersGPTEnabled>false</articleAnswersGPTEnabled>
+    <citationsEnabled>false</citationsEnabled>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>The agent instructions</description>
+        <developerName>AgentScriptInternal_agent_instructions</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Agent Instructions</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>The next topic to be visited</description>
+        <developerName>AgentScriptInternal_next_topic</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Next Topic</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <copilotPrimaryLanguage>en_US</copilotPrimaryLanguage>
+    <genAiPlannerName>Adithyatest_v1</genAiPlannerName>
+    <isScriptCompatibleAgent>true</isScriptCompatibleAgent>
+    <knowledgeActionEnabled>false</knowledgeActionEnabled>
+    <knowledgeFallbackEnabled>false</knowledgeFallbackEnabled>
+    <planner>
+        <fullName>Adithyatest_v1</fullName>
+        <agentGraphRef>20ZWC000001zm7B</agentGraphRef>
+        <agentScript>20ZWC000001zm5Z</agentScript>
+        <description>A simple test agent that answers general questions. No custom actions.</description>
+        <localTopicLinks>
+            <genAiPluginName>agent_router</genAiPluginName>
+        </localTopicLinks>
+        <localTopicLinks>
+            <genAiPluginName>start_agent</genAiPluginName>
+        </localTopicLinks>
+        <localTopics>
+            <canEscalate>false</canEscalate>
+            <description>Route all messages to the start_agent subagent.</description>
+            <genAiPluginInstructions>
+                <description>You are a helpful, safe AI assistant. Answer general questions concisely using your built-in reasoning only. If unsure, say you don’t know and suggest how to find out. Do not call actions, browse, or use external tools.
+
+{{state.AgentScriptInternal_agent_instructions}}</description>
+                <developerName>instruction0_179WC0000015aVK</developerName>
+                <language>en_US</language>
+                <masterLabel>instruction0_179WC0000015aVK</masterLabel>
+                <sortOrder>1</sortOrder>
+            </genAiPluginInstructions>
+            <language>en_US</language>
+            <localDeveloperName>agent_router</localDeveloperName>
+            <masterLabel>Agent Router</masterLabel>
+            <pluginType>Topic</pluginType>
+        </localTopics>
+        <localTopics>
+            <canEscalate>false</canEscalate>
+            <description>Entry point that answers general knowledge questions conversationally</description>
+            <genAiPluginInstructions>
+                <description>You are a helpful, safe AI assistant. Answer general questions concisely using your built-in reasoning only. If unsure, say you don’t know and suggest how to find out. Do not call actions, browse, or use external tools.</description>
+                <developerName>instruction0_179WC0000015aVJ</developerName>
+                <language>en_US</language>
+                <masterLabel>instruction0_179WC0000015aVJ</masterLabel>
+                <sortOrder>1</sortOrder>
+            </genAiPluginInstructions>
+            <language>en_US</language>
+            <localDeveloperName>start_agent</localDeveloperName>
+            <masterLabel>Start Agent</masterLabel>
+            <pluginType>Topic</pluginType>
+        </localTopics>
+        <masterLabel>Adithyatest</masterLabel>
+        <plannerType>Atlas__ConcurrentMultiAgentOrchestration</plannerType>
+    </planner>
+    <smallTalkEnabled>false</smallTalkEnabled>
+    <staticPromptsEnabled>false</staticPromptsEnabled>
+    <status>Active</status>
+    <stopRecPrompts>false</stopRecPrompts>
+    <surfacesEnabled>false</surfacesEnabled>
+    <toneType>Casual</toneType>
+    <version>1</version>
+    <welcomeMessage>Hi, I&apos;m an AI assistant. How can I help you?</welcomeMessage>
+</AiAgentDefinitionVersion>

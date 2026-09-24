@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AiAgentDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <agentDSLEnabled>true</agentDSLEnabled>
+    <agentDescription>A simple test agent that answers general questions. No custom actions.</agentDescription>
+    <agentType>EinsteinServiceAgent</agentType>
+    <botUser>adithyatest@00dwc00000ebvej205366242.ext</botUser>
+    <logPrivateConversationData>false</logPrivateConversationData>
+    <richContentEnabled>true</richContentEnabled>
+    <type>ExternalCopilot</type>
+</AiAgentDefinition>

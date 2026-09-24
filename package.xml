@@ -2,43 +2,10 @@
     <version>68.0</version>
     <types>
         <members>Adithyatest</members>
-        <members>AiAgentDefinitionPlanner</members>
-        <members>B2B_Commerce_Enhanced_Bot</members>
-        <members>Copilot_for_Salesforce</members>
-        <members>HarshitAGENT</members>
-        <members>Luna</members>
-        <members>My_Service_Agent</members>
-        <members>NotebookAIAgent</members>
-        <members>SDO_B2BCommerce_Bot</members>
-        <members>SDO_SFS_Rider</members>
-        <members>SDO_SFS_Tracker</members>
-        <members>SalesAgent</members>
-        <members>SalesBotsEinsteinSalesBots</members>
-        <members>SearchAgent</members>
-        <members>Service_Sunny_Bot</members>
-        <members>nitenagenttest</members>
         <name>AiAgentDefinition</name>
     </types>
     <types>
         <members>Adithyatest#1</members>
-        <members>AiAgentDefinitionPlanner#1</members>
-        <members>B2B_Commerce_Enhanced_Bot#1</members>
-        <members>Copilot_for_Salesforce#1</members>
-        <members>HarshitAGENT#1</members>
-        <members>Luna#1</members>
-        <members>My_Service_Agent#1</members>
-        <members>My_Service_Agent#2</members>
-        <members>NotebookAIAgent#1</members>
-        <members>SDO_B2BCommerce_Bot#2</members>
-        <members>SDO_B2BCommerce_Bot#3</members>
-        <members>SDO_SFS_Rider#1</members>
-        <members>SDO_SFS_Tracker#1</members>
-        <members>SalesAgent#1</members>
-        <members>SalesBotsEinsteinSalesBots#1</members>
-        <members>SearchAgent#1</members>
-        <members>Service_Sunny_Bot#4</members>
-        <members>nitenagenttest#1</members>
-        <members>nitenagenttest#2</members>
         <name>AiAgentDefinitionVersion</name>
     </types>
     <types>
