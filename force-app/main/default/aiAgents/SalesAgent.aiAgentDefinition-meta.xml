@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<AiAgentDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
-    <agentDSLEnabled>true</agentDSLEnabled>
-    <agentDescription>Help sales reps through every step of the sales process. Customize your agent with skills to fit your sales team&apos;s needs.</agentDescription>
-    <agentType>AgentforceEmployeeAgent</agentType>
-    <logPrivateConversationData>false</logPrivateConversationData>
-    <richContentEnabled>true</richContentEnabled>
-    <type>InternalCopilot</type>
-</AiAgentDefinition>

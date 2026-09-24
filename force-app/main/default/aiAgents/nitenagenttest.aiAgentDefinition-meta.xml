@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<AiAgentDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
-    <agentDSLEnabled>true</agentDSLEnabled>
-    <agentDescription>Help employees get answers to questions in Slack. Summarize findings from your company&apos;s Slack history and any added knowledge to get answers, or create a Slack canvas with these findings and share them with others.</agentDescription>
-    <agentType>AgentforceEmployeeAgent</agentType>
-    <logPrivateConversationData>false</logPrivateConversationData>
-    <richContentEnabled>true</richContentEnabled>
-    <type>InternalCopilot</type>
-</AiAgentDefinition>
